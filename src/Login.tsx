@@ -1,9 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Envelope, LockKey } from "@phosphor-icons/react"
+import { CircleNotch, Envelope, LockKey } from "@phosphor-icons/react"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { toast } from "react-toastify"
 import * as yup from "yup"
 import { Button } from "./components/ui/button"
 import { Input } from "./components/ui/input"
+import { useAuth } from "./hooks/auth"
 
 interface ILoginProps {
 	email: string
@@ -26,9 +28,16 @@ export function Login() {
 	} = useForm<ILoginProps>({
 		resolver: yupResolver(schema),
 	})
+	const { loading, signIn } = useAuth()
 
-	const onSubmit: SubmitHandler<ILoginProps> = (data) => {
-		console.log(data)
+	const onSubmit: SubmitHandler<ILoginProps> = async (data) => {
+		const singin = await signIn(data.email, data.password)
+
+		if (singin.status) {
+			return toast.success(singin.message)
+		}
+
+		toast.error(singin.message)
 	}
 
 	return (
@@ -75,7 +84,7 @@ export function Login() {
 					type="submit"
 					className="w-full mx-auto max-w-[40vw] py-4 h-14 bg-blue-500 text-white font-semibold uppercase text-lg hover:bg-blue-600"
 				>
-					Entrar
+					{loading ? <CircleNotch size={32} className="animate-spin" /> : "Entrar"}
 				</Button>
 			</form>
 		</div>
