@@ -1,3 +1,4 @@
+import { InputPassword } from "@/components/InputPassword"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -76,7 +77,7 @@ export function SignUp({ loading, setIsLogin, handleData }: ILoginProps) {
 				<div className="flex flex-col gap-1">
 					<div className="flex items-center relative">
 						<LockKey size={24} className="absolute left-4 text-gray-400" />
-						<Input
+						<InputPassword
 							type="password"
 							className="py-4 h-14 outline-blue-500 pl-14"
 							placeholder="********"
@@ -88,7 +89,7 @@ export function SignUp({ loading, setIsLogin, handleData }: ILoginProps) {
 				<div className="flex flex-col gap-1">
 					<div className="flex items-center relative">
 						<LockKey size={24} className="absolute left-4 text-gray-400" />
-						<Input
+						<InputPassword
 							type="password"
 							className="py-4 h-14 outline-blue-500 pl-14"
 							placeholder="********"
