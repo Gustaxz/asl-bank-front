@@ -8,9 +8,11 @@ export function Home() {
 	const { screen } = useScreens()
 
 	return (
-		<div className="flex h-screen w-screen gap-8">
+		<div className="flex h-screen w-screen">
 			<Sidebar />
-			{screen === Screens.HOME ? <Withdraw /> : <History />}
+			<div className="flex justify-center w-full">
+				{screen === Screens.HOME ? <Withdraw /> : <History />}
+			</div>
 		</div>
 	)
 }

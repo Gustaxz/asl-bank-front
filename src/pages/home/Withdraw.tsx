@@ -14,7 +14,7 @@ export function Withdraw() {
 	const [price, setPrice] = useState(0)
 
 	return (
-		<div className="flex flex-col gap-16 py-8 w-full">
+		<div className="flex flex-col gap-16 py-8 w-full max-w-4xl">
 			<p className="text-2xl font-semibold">Área de saques</p>
 			<div className="flex flex-col gap-4">
 				<Label htmlFor="price" className="text-base">
