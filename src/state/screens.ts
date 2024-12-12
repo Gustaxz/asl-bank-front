@@ -2,7 +2,8 @@ import { atom } from "jotai";
 
 export enum Screens {
     LOGIN,
-    HOME
+    HOME,
+    HISTORY
 }
 
 export const screensAtom = atom(Screens.LOGIN);
