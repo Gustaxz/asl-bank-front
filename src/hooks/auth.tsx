@@ -1,7 +1,9 @@
 import { api } from "@/api"
 import { useState } from "react"
+import { useUserInfos } from "./userInfos"
 
 export function useAuth() {
+	const { refreshInfos } = useUserInfos()
 	const [loading, setLoading] = useState(false)
 
 	async function signIn(email: string, password: string) {
@@ -15,6 +17,7 @@ export function useAuth() {
 
 			if (res.data.access_token !== null) {
 				localStorage.setItem("token", res.data.access_token)
+				refreshInfos()
 				return {
 					message: "Login efetuado com sucesso",
 					status: true,

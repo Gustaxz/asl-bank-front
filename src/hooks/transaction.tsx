@@ -4,8 +4,10 @@ import { jwtDecode } from "jwt-decode"
 import { useState } from "react"
 import { toast } from "react-toastify"
 import { useScreens } from "./screens"
+import { useUserInfos } from "./userInfos"
 
 export function useTransaction() {
+	const { refreshInfos } = useUserInfos()
 	const { changeScreen } = useScreens()
 	const [loading, setLoading] = useState(false)
 
@@ -46,6 +48,7 @@ export function useTransaction() {
 
 			toast.success("Transação realizada com sucesso")
 			setLoading(false)
+			refreshInfos()
 			return true
 		} catch (error) {
 			console.error(error)
