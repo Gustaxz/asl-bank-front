@@ -3,11 +3,11 @@ import { CircleNotch, Envelope, LockKey } from "@phosphor-icons/react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import * as yup from "yup"
-import { Button } from "./components/ui/button"
-import { Input } from "./components/ui/input"
-import { useAuth } from "./hooks/auth"
-import { useScreens } from "./hooks/screens"
-import { Screens } from "./state/screens"
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+import { useAuth } from "../hooks/auth"
+import { useScreens } from "../hooks/screens"
+import { Screens } from "../state/screens"
 
 interface ILoginProps {
 	email: string
