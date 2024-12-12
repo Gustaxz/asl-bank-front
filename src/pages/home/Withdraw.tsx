@@ -1,3 +1,4 @@
+import { ConfirmWithdraw } from "@/components/ConfirmWithdraw"
 import { MoneyOption } from "@/components/MoneyOption"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -6,6 +7,7 @@ import { RadioGroup } from "@/components/ui/radio-group"
 import { calculateMoney } from "@/utils/calculate-money"
 import { formatCurrency, handleCurrency } from "@/utils/currency"
 import { useState } from "react"
+import { toast } from "react-toastify"
 
 export function Withdraw() {
 	const [moneyOptions, setMoneyOptions] = useState<Map<number, number>[]>([])
@@ -30,8 +32,12 @@ export function Withdraw() {
 						placeholder="R$ 0.00"
 					/>
 					<Button
-						className="h-14 w-[20%] min-w-40 bg-blue-500 hover:bg-blue-600 text-white text-lg"
+						className="h-14 w-[20%] min-w-40 bg-blue-500 hover:bg-blue-500 text-white text-lg"
 						onClick={() => {
+							if (price === 0) {
+								toast.error("Digite um valor válido")
+								return setMoneyOptions([])
+							}
 							const value = calculateMoney(price)
 							console.log("the value is", value)
 							setMoneyOptions(value)
@@ -46,6 +52,15 @@ export function Withdraw() {
 					<MoneyOption key={idx} items={option} idx={idx} />
 				))}
 			</RadioGroup>
+			{moneyOptions.length > 0 && (
+				<ConfirmWithdraw
+					value={price}
+					onSave={() => {
+						setPrice(0)
+						setMoneyOptions([])
+					}}
+				/>
+			)}
 		</div>
 	)
 }
