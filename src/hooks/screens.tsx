@@ -8,5 +8,10 @@ export function useScreens() {
 		setScreen(screen)
 	}
 
-	return { screen, changeScreen }
+	function logOut() {
+		setScreen(Screens.LOGIN)
+		localStorage.removeItem("token")
+	}
+
+	return { screen, changeScreen, logOut }
 }

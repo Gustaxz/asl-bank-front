@@ -1,10 +1,10 @@
 import { useScreens } from "@/hooks/screens"
 import { cn } from "@/lib/utils"
 import { Screens } from "@/state/screens"
-import { Clock, Money } from "@phosphor-icons/react"
+import { Clock, Money, SignOut } from "@phosphor-icons/react"
 
 export function Sidebar() {
-	const { changeScreen, screen } = useScreens()
+	const { logOut, changeScreen, screen } = useScreens()
 
 	return (
 		<div className="w-[25%] h-full flex flex-col justify-between items-center bg-zinc-100 py-8 dark:bg-zinc-800 dark:border-gray-400 shadow-sm duration-300 transition-all">
@@ -41,7 +41,13 @@ export function Sidebar() {
 					<p>Histórico</p>
 				</div>
 			</div>
-			<div></div>
+			<div
+				onClick={logOut}
+				className="w-[80%] group cursor-pointer group  h-11 rounded-md flex items-center px-4 gap-4 font-semibold bg-red-500 text-white hover:bg-red-600"
+			>
+				<SignOut size={24} className="group-hover:scale-110" />
+				<p>Sair</p>
+			</div>
 		</div>
 	)
 }
