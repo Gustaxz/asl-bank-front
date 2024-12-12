@@ -6,6 +6,8 @@ import * as yup from "yup"
 import { Button } from "./components/ui/button"
 import { Input } from "./components/ui/input"
 import { useAuth } from "./hooks/auth"
+import { useScreens } from "./hooks/screens"
+import { Screens } from "./state/screens"
 
 interface ILoginProps {
 	email: string
@@ -29,11 +31,13 @@ export function Login() {
 		resolver: yupResolver(schema),
 	})
 	const { loading, signIn } = useAuth()
+	const { changeScreen } = useScreens()
 
 	const onSubmit: SubmitHandler<ILoginProps> = async (data) => {
 		const singin = await signIn(data.email, data.password)
 
 		if (singin.status) {
+			changeScreen(Screens.HOME)
 			return toast.success(singin.message)
 		}
 
