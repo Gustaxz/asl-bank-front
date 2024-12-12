@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { calculateMoney } from "@/utils/calculate-money"
 import { formatCurrency, handleCurrency } from "@/utils/currency"
 import { useState } from "react"
 
@@ -25,7 +26,13 @@ export function Withdraw() {
 						className="py-4 h-14  bg-gray-50 outline-none w-[30%] min-w-40 text-xl md:text-xl border-t-0 border-r-0 rounded-none border-l-0 border-b-2 border-b-blue-500"
 						placeholder="R$ 0.00"
 					/>
-					<Button className="h-14 w-[20%] min-w-40 bg-blue-500 hover:bg-blue-600 text-white text-lg">
+					<Button
+						className="h-14 w-[20%] min-w-40 bg-blue-500 hover:bg-blue-600 text-white text-lg"
+						onClick={() => {
+							const value = calculateMoney(price)
+							console.log("the value is", value)
+						}}
+					>
 						Sacar
 					</Button>
 				</div>
