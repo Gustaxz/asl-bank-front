@@ -3,7 +3,9 @@ import { Eye, EyeSlash } from "@phosphor-icons/react"
 import { ComponentProps, useState } from "react"
 import { Input } from "./ui/input"
 
-type InputProps = ComponentProps<"input">
+interface InputProps extends ComponentProps<"input"> {
+	register?: object
+}
 
 export function InputPassword(props: InputProps) {
 	const [hidePassword, setHidePassword] = useState(true)
@@ -11,6 +13,7 @@ export function InputPassword(props: InputProps) {
 	return (
 		<div className="flex items-center relative w-full">
 			<Input
+				{...props.register}
 				{...props}
 				className={cn(props.className, "pr-14")}
 				type={hidePassword ? "password" : "text"}

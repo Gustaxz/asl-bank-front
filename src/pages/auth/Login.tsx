@@ -63,7 +63,7 @@ export function Login({ loading, setIsLogin, handleData }: ILoginProps) {
 							type="password"
 							className="py-4 h-14 outline-blue-500 pl-14"
 							placeholder="********"
-							{...register("password")}
+							register={{ ...register("password") }}
 						/>
 					</div>
 					<p className="text-red-500 text-sm h-2">{errors?.password?.message}</p>
