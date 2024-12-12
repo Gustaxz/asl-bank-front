@@ -1,11 +1,14 @@
+import { MoneyOption } from "@/components/MoneyOption"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { RadioGroup } from "@/components/ui/radio-group"
 import { calculateMoney } from "@/utils/calculate-money"
 import { formatCurrency, handleCurrency } from "@/utils/currency"
 import { useState } from "react"
 
 export function Withdraw() {
+	const [moneyOptions, setMoneyOptions] = useState<Map<number, number>[]>([])
 	const [price, setPrice] = useState(0)
 
 	return (
@@ -31,12 +34,18 @@ export function Withdraw() {
 						onClick={() => {
 							const value = calculateMoney(price)
 							console.log("the value is", value)
+							setMoneyOptions(value)
 						}}
 					>
 						Sacar
 					</Button>
 				</div>
 			</div>
+			<RadioGroup name="money-options" className="flex flex-col gap-4 pr-8">
+				{moneyOptions.map((option, idx) => (
+					<MoneyOption key={idx} items={option} idx={idx} />
+				))}
+			</RadioGroup>
 		</div>
 	)
 }
