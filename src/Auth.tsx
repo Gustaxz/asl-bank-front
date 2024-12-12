@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useScreens } from "./hooks/screens"
 import { Home } from "./pages/Home"
-import { Login } from "./pages/Login"
+import { LoginOrSignUp } from "./pages/LoginOrSignUp"
 import { Screens } from "./state/screens"
 
 export function Auth() {
@@ -16,5 +16,5 @@ export function Auth() {
 		}
 	}, [])
 
-	return screen === Screens.LOGIN ? <Login /> : <Home />
+	return screen === Screens.LOGIN ? <LoginOrSignUp /> : <Home />
 }

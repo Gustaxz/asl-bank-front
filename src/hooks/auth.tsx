@@ -13,8 +13,6 @@ export function useAuth() {
 				password,
 			})
 
-			console.log("dado", res.data)
-
 			if (res.data.access_token !== null) {
 				localStorage.setItem("token", res.data.access_token)
 				return {
@@ -41,8 +39,43 @@ export function useAuth() {
 		}
 	}
 
+	async function signUp(name: string, email: string, password: string) {
+		try {
+			setLoading(true)
+
+			const res = await api.post("/user", {
+				email,
+				password,
+				name,
+				balance: 100,
+			})
+
+			if (res.data.statusCode !== 201) {
+				return {
+					message: "Erro ao efetuar cadastro",
+					status: false,
+				}
+			}
+
+			return {
+				message: "Cadastro efetuado com sucesso",
+				status: true,
+			}
+		} catch (error) {
+			console.error(error)
+		} finally {
+			setLoading(false)
+		}
+
+		return {
+			message: "Erro ao efetuar cadastro",
+			status: false,
+		}
+	}
+
 	return {
 		signIn,
+		signUp,
 		loading,
 	}
 }

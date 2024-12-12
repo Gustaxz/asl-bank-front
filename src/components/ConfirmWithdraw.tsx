@@ -57,7 +57,7 @@ export function ConfirmWithdraw({ value, onSave }: IConfirmWithdrawProps) {
 							}
 						}}
 					>
-						{loading ? <CircleNotch size={32} className="animate-spin" /> : "Entrar"}
+						{loading ? <CircleNotch size={32} className="animate-spin" /> : "Confirmar"}
 					</Button>
 				</AlertDialogFooter>
 			</AlertDialogContent>
