@@ -39,7 +39,6 @@ export function Withdraw() {
 								return setMoneyOptions([])
 							}
 							const value = calculateMoney(price)
-							console.log("the value is", value)
 							setMoneyOptions(value)
 						}}
 					>
@@ -47,7 +46,11 @@ export function Withdraw() {
 					</Button>
 				</div>
 			</div>
-			<RadioGroup name="money-options" className="flex flex-col gap-4 pr-8">
+			<RadioGroup
+				name="money-options"
+				className="flex flex-col gap-4 pr-8"
+				defaultValue={"0"}
+			>
 				{moneyOptions.map((option, idx) => (
 					<MoneyOption key={idx} items={option} idx={idx} />
 				))}
