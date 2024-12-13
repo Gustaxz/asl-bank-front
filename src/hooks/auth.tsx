@@ -53,6 +53,13 @@ export function useAuth() {
 				balance: 100,
 			})
 
+			if (res.data.statusCode === 409) {
+				return {
+					message: res.data.message,
+					status: false,
+				}
+			}
+
 			if (res.data.statusCode !== 201) {
 				return {
 					message: "Erro ao efetuar cadastro",
