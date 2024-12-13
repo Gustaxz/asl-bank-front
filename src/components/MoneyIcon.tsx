@@ -1,3 +1,4 @@
+import { DEPLOY_URL } from "@/constants/ulrs"
 import { cn } from "@/lib/utils"
 
 interface IMoneyIconProps {
@@ -45,7 +46,7 @@ export function MoneyIcon({ value }: IMoneyIconProps) {
 			)}
 		>
 			<p className="absolute mt-[0.15rem] text-white font-bold">{value}</p>
-			<img src="/money.svg" className="object-cover w-full h-full"></img>
+			<img src={`${DEPLOY_URL}/money.svg`} className="object-cover w-full h-full"></img>
 		</div>
 	)
 }

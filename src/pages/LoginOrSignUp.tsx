@@ -1,3 +1,4 @@
+import { DEPLOY_URL } from "@/constants/ulrs"
 import { useState } from "react"
 import { SubmitHandler } from "react-hook-form"
 import { toast } from "react-toastify"
@@ -52,7 +53,7 @@ export function LoginOrSignUp() {
 					<span className="font-grotesk italic"> MegaBank</span>
 				</p>
 
-				<img src="/login.svg" alt="" className="w-[60%]" />
+				<img src={`${DEPLOY_URL}/login.svg`} alt="" className="w-[60%]" />
 			</div>
 			{isLogin ? (
 				<Login loading={loading} setIsLogin={setIsLogin} handleData={onSubmitLogin} />
