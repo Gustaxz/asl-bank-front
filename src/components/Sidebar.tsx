@@ -1,7 +1,8 @@
 import { useScreens } from "@/hooks/screens"
 import { cn } from "@/lib/utils"
 import { Screens } from "@/state/screens"
-import { Clock, Money, SignOut } from "@phosphor-icons/react"
+import { Clock, Money } from "@phosphor-icons/react"
+import { ConfirmLogOff } from "./LogOff"
 
 export function Sidebar() {
 	const { logOut, changeScreen, screen } = useScreens()
@@ -41,13 +42,7 @@ export function Sidebar() {
 					<p>Histórico</p>
 				</div>
 			</div>
-			<div
-				onClick={logOut}
-				className="w-[80%] group cursor-pointer group  h-11 rounded-md flex items-center px-4 gap-4 font-semibold bg-red-500 text-white hover:bg-red-600"
-			>
-				<SignOut size={24} className="group-hover:scale-110" />
-				<p>Sair</p>
-			</div>
+			<ConfirmLogOff onClick={logOut} />
 		</div>
 	)
 }
