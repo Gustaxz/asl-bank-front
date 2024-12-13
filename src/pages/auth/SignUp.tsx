@@ -51,7 +51,7 @@ export function SignUp({ loading, setIsLogin, handleData }: ILoginProps) {
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<p className="text-slate-700 text-4xl font-bold">Cadastre-se</p>
-			<div className="flex flex-col gap-4 w-full mx-auto max-w-[40vw]">
+			<div className="flex flex-col gap-4 w-full mx-auto sm:max-w-[40vw] max-w-[90vw]">
 				<div className="flex flex-col gap-1">
 					<div className="flex items-center relative">
 						<Envelope size={24} className="absolute left-4 text-gray-400" />

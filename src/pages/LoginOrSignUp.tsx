@@ -45,7 +45,7 @@ export function LoginOrSignUp() {
 	}
 
 	return (
-		<div className="sm:grid grid-cols-2 h-screen">
+		<div className="grid sm:grid-cols-2 grid-cols-1 h-screen">
 			<div className="bg-blue-500 hidden w-full h-full sm:flex flex-col gap-20 items-center justify-center">
 				<p className="font-semibold text-5xl text-white">
 					Portal

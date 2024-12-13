@@ -69,7 +69,13 @@ export function Sidebar() {
 					{isSidebarOpen ? <p>Histórico</p> : null}
 				</div>
 			</div>
-			<ConfirmLogOff onClick={logOut} isSidebarOpen={isSidebarOpen} />
+			<ConfirmLogOff
+				onClick={() => {
+					setIsSidebarOpen(false)
+					logOut()
+				}}
+				isSidebarOpen={isSidebarOpen}
+			/>
 		</div>
 	)
 }
