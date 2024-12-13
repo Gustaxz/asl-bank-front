@@ -34,7 +34,7 @@ export function Withdraw() {
 					<Button
 						className="h-14 w-[20%] min-w-40 bg-blue-500 hover:bg-blue-500 text-white text-lg"
 						onClick={() => {
-							if (price === 0) {
+							if (price <= 0) {
 								toast.error("Digite um valor válido")
 								return setMoneyOptions([])
 							}

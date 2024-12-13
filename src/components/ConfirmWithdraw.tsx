@@ -33,7 +33,7 @@ export function ConfirmWithdraw({ value, onSave }: IConfirmWithdrawProps) {
 			<AlertDialogContent className="flex flex-col gap-8">
 				<AlertDialogHeader>
 					<AlertDialogTitle className="text-xl">
-						Deseja messmo realizar o saque de {formatCurrency(value)}?
+						Deseja mesmo realizar o saque de {formatCurrency(value)}?
 					</AlertDialogTitle>
 					{/* <AlertDialogDescription>
 						This action cannot be undone. This will permanently delete your account and
@@ -48,7 +48,7 @@ export function ConfirmWithdraw({ value, onSave }: IConfirmWithdrawProps) {
 						Cancelar
 					</AlertDialogCancel>
 					<Button
-						className="h-10 bg-blue-500 hover:bg-blue-500 text-white"
+						className="h-10 bg-blue-500 hover:bg-blue-600 text-white"
 						onClick={async () => {
 							const success = await handleTransaction(value)
 							if (success && onSave) {
