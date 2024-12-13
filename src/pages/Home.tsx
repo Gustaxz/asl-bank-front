@@ -15,7 +15,7 @@ export function Home() {
 	const { screen } = useScreens()
 
 	return (
-		<div className="flex h-screen w-screen overflow-y-auto max-h-screen">
+		<div className="flex h-screen w-screen overflow-y-hidden">
 			<Sidebar />
 			<div className="flex flex-col gap-4 w-full sm:px-0 px-4">
 				<div className="flex sm:text-lg justify-between w-full py-8 max-w-5xl mx-auto">
