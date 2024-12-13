@@ -7,3 +7,4 @@ export enum Screens {
 }
 
 export const screensAtom = atom(Screens.LOGIN);
+export const sidebarAtom = atom(false);

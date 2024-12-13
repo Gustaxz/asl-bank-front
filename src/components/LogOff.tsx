@@ -13,9 +13,10 @@ import { Button } from "./ui/button"
 
 interface IConfirmLogOffProps {
 	onClick?: () => void
+	isSidebarOpen?: boolean
 }
 
-export function ConfirmLogOff({ onClick }: IConfirmLogOffProps) {
+export function ConfirmLogOff({ onClick, isSidebarOpen }: IConfirmLogOffProps) {
 	const [modalOpen, setModalOpen] = useState(false)
 
 	return (
@@ -25,7 +26,7 @@ export function ConfirmLogOff({ onClick }: IConfirmLogOffProps) {
 				className="w-[80%] group cursor-pointer group  h-11 rounded-md flex items-center px-4 gap-4 font-semibold bg-red-500 text-white hover:bg-red-600"
 			>
 				<SignOut size={24} className="group-hover:scale-110" />
-				<p>Sair</p>
+				{isSidebarOpen ? <p>Sair</p> : null}
 			</AlertDialogTrigger>
 			<AlertDialogContent className="flex flex-col gap-8">
 				<AlertDialogHeader>
