@@ -18,7 +18,7 @@ export function Home() {
 		<div className="flex h-screen w-screen overflow-y-auto max-h-screen">
 			<Sidebar />
 			<div className="flex flex-col gap-4 w-full sm:px-0 px-4">
-				<div className="flex text-lg justify-between w-full py-8 max-w-5xl mx-auto">
+				<div className="flex sm:text-lg justify-between w-full py-8 max-w-5xl mx-auto">
 					<div className="flex items-center gap-2">
 						<List
 							size={24}
@@ -32,8 +32,8 @@ export function Home() {
 							</span>
 						</p>
 					</div>
-					<div className="flex items-center gap-2">
-						<p>Olá, {userInfo?.name.split(" ")[0]}!</p>
+					<div className="flex items-center gap-2 max-w-[45%]">
+						<p className="truncate">Olá, {userInfo?.name.split(" ")[0]}!</p>
 						<UserCircle size={32} weight="fill" className="text-gray-600" />
 					</div>
 				</div>
