@@ -31,8 +31,19 @@ export function useTransaction() {
 		}
 
 		try {
-			const userId = jwtDecoded.sub
-			const res = await api.post("/transaction", { senderId: userId, amount })
+			const res = await api.post(
+				"/transaction",
+				{ amount },
+				{
+					headers: {
+						Authorization: `Bearer ${jwToken}`,
+					},
+				}
+			)
+
+			if (res.data.statusCode === 401) {
+				return userNotLogged()
+			}
 
 			if (res.data.statusCode === 400) {
 				toast.error("Saldo insuficiente!")

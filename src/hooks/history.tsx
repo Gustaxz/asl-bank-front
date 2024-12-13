@@ -29,8 +29,15 @@ export function useHistory() {
 		}
 
 		try {
-			const userId = jwtDecoded.sub
-			const res = await api.get(`/transaction/${userId}`)
+			const res = await api.get(`/transaction/`, {
+				headers: {
+					Authorization: `Bearer ${jwToken}`,
+				},
+			})
+
+			if (res.data.statusCode === 401) {
+				return userNotLogged()
+			}
 
 			if (res.data.statusCode !== 200) {
 				toast.error("Erro ao buscar histórico")
