@@ -27,8 +27,16 @@ export function useUserInfos() {
 		}
 
 		try {
-			const userId = jwtDecoded.sub
-			const res = await api.get(`/user/${userId}`)
+			const res = await api.get(`/user/me`, {
+				headers: {
+					Authorization: `Bearer ${jwToken}`,
+				},
+			})
+
+			if (res.data.statusCode === 401) {
+				return userNotLogged()
+			}
+
 			setUserInfo(res.data)
 		} catch (error) {
 			console.error(error)
